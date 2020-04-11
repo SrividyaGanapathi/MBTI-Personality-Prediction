@@ -1,4 +1,4 @@
-# MSiA423 Project Charter and Backlog
+# MSiA423 MBTI TYPE 
 ### By Srividya Ganapathi
 ### QA - Bhavya Kaushik
 
