@@ -1,6 +1,57 @@
-# MSiA423 Template Repository
+# MSiA423 MBTI TYPE 
+### By Srividya Ganapathi
+### QA - Bhavya Kaushik
 
 <!-- toc -->
+- [Project Charter](#Project-Charter)
+- [Sprint Plan](#Sprint-Plan)
+- [Icebox](#Icebox)
+
+## Project Charter
+<!-- toc -->
+### Vision 
+Identify the personality and characteristics of a person as indicated by the Myers-Briggs Type Indicator(MBTI) test by identifying the patterns in his/her writing style.
+
+### Mission
+Recently, the validity of the MBTI test has been questioned because of unreliability in experiments surrounding it, along with other reasons. But it has still proven to be a very useful tool in a lot of areas, and the purpose of this dataset is to help see if any patterns can be detected in specific types and style of writing of people and if these patterns are indicative of a person's personality. This overall explores the validity of the test in analysing, predicting or categorising behaviour. 
+
+### Content
+This dataset contains over 8600 rows of data, on each row is a person’s:
+ - Type (This persons 4 letter MBTI code/type)
+ - A section of each of the last 50 things they have posted (Each entry separated by "|||" (3 pipe characters))
+
+### Success Criteria
+As mentioned earlier, the experiments are unreliable. In such psychological tests, even an accuracy of 70% is acceptable for the tool to be relied upon. With more examples, the model can learn furter, but presently the data is static and the user will select a few words iteratively to know his/her personality type. The app will also take feedback on whether it was right or wrong. This leaves room for future improvement to the model by using the selected words for each personality  type.
+
+<!-- toc -->
+
+## Sprint Plan
+For the next 3 sprints (Each sprint of 2 weeks) the epics are:
+
+#### Epic-1
+* EDA of the Data
+* Text classification model building and tuning
+* Apply different embeddings to the data (Count vectorizer, wordtovec, GloVe etc.)
+
+#### Epic-2
+* Choose words (from the dataset and outside) to be displayed to the user for selection.
+* Build a model for identifying the personality type based on the chosen words.
+
+#### Epic-3
+* Build the front end app
+* Performing sanity check using test cases
+
+## Icebox
+#### Epic-4
+* Bulid a database of the words selected, the predicted personality and the actual personality for checking the accuracy of the model.
+* Fine tuning the model to increase accuracy.
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 - [Directory structure](#directory-structure)
 - [Running the app](#running-the-app)
