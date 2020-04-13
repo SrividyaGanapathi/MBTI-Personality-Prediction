@@ -64,18 +64,18 @@ For the next 4 sprints (Each sprint of 2 weeks) the Initiatives are:
 #### Epic-2: Predict personality type
    - Story 1: Create a new dataset of the statements selected by the user 
    - Story 2: Predict the personality based on the selected statements.
-     
-#### Epic-3: Accuracy Check 
+   
+### Initiative 4 : Fine tuning the model to increase accuracy 
+
+#### Epic-1: Accuracy Check 
    - Story 1: Receive the actual MBTI Type from the user as input
    - Story 2: Append this to the record of the current user.
+   - Story 3: For every few use cases append the record to the train data.
 
-#### Epic-3
-* Build the front end app 
-  - Create the first page layout
-  - Design the user input layout
-  - Set connections to the backend servers
-* Performing sanity check using test cases
-
+#### Epic-2: Finetuning the model
+  - Story 1: Penalize the statements that led to a misclassification.
+  - Story 2: Retrain the model to increase accuracy.
+  
 ## Icebox
 #### Epic-4
 * Identify users who know their MBTI personality to try the app.
