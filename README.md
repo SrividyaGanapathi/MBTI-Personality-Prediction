@@ -15,7 +15,7 @@
 Identify the personality and characteristics of a person as indicated by the Myers-Briggs Type Indicator(MBTI) test by identifying the patterns in his/her writing style.
 
 ### Mission
-Recently, the validity of the MBTI test has been questioned because of unreliability in experiments surrounding it, along with other reasons. But it has still proven to be a very useful tool in a lot of areas, and the purpose of this dataset[https://www.kaggle.com/datasnaek/mbti-type] is to help see if any patterns can be detected in specific types and style of writing of people and if these patterns are indicative of a person's personality. This overall explores the validity of the test in analysing, predicting or categorising behaviour. 
+The MBTI test is used in various domains everyday but recently, the validity of the test has been questioned because of unreliability in experiments surrounding it, along with other reasons. But it has still proven to be a very useful tool in a lot of areas, and the purpose of this dataset[https://www.kaggle.com/datasnaek/mbti-type] is to help see if any patterns can be detected in specific types and style of writing of people and if these patterns are indicative of a person's personality. This overall explores the validity of the test in analysing, predicting or categorising behaviour. 
 
 ### Content
 This dataset contains over 8600 rows of data, on each row is a person’s:
@@ -33,15 +33,43 @@ As mentioned earlier, the experiments are unreliable. In such psychological test
 * Model for predicting the MBTI type from selected statements
 * Improve accuracy of the predictive model by several user inputs.
 
-## Sprint Plan
-For the next 3 sprints (Each sprint of 2 weeks) the epics are:
+## Sprint Planning
+For the next 4 sprints (Each sprint of 2 weeks) the Initiatives are:
+
+### Initiative 1 : Models to extract writing styles and patterns associated with each MBTI type.
 
 #### Epic-1
-* EDA of the Data
-* Text classification model building and tuning
-* Apply different embeddings to the data (Count vectorizer, wordtovec, GloVe etc.)
-
+* Exploratory Data Analysis and preprocessing.
+   - Story 1: EDA of the Data
+   - Story 2: Apply different embeddings to the data (Count vectorizer, word2vec, GloVe etc.)
+     
 #### Epic-2
+* Comparison of models 
+   - Story 1: Build models like regression, random forest, LSTM, KNN etc. under cross validation to identify the best model.
+
+### Initiative 2 : Develop the front and back ends of the model
+
+#### Epic-1
+* Build the front end Flask app
+   - Story 1: Create the first page layout
+   - Story 2: Design the user input layer
+   - Story 3: Set connections to the backend servers
+     
+#### Epic-2
+* Set up the cloud server for the data using AWS RDS and S3
+
+#### Epic-3
+* Performing sanity check using test cases
+
+### Initiative 3 : Model to predict the MBTI type from selected statements
+#### Epic- Choose statements available to the user
+   - Story 1: Map sets of statements corresponding to each personality type.
+   - Story 2: Design the user input layer
+   - Story 3: Set connections to the backend servers
+     
+#### Epic-2
+* Set up the cloud server for the data using AWS RDS and S3
+#### Epic-3
 * Choose words (from the dataset and outside) to be displayed to the user for selection.
 * Build a model for identifying the personality type based on the chosen words.
 
