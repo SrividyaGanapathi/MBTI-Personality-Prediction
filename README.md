@@ -4,8 +4,10 @@
 
 <!-- toc -->
 - [Project Charter](#Project-Charter)
+- [Initiatives](#Initiatives)
 - [Sprint Plan](#Sprint-Plan)
 - [Icebox](#Icebox)
+
 
 ## Project Charter
 <!-- toc -->
@@ -13,7 +15,7 @@
 Identify the personality and characteristics of a person as indicated by the Myers-Briggs Type Indicator(MBTI) test by identifying the patterns in his/her writing style.
 
 ### Mission
-Recently, the validity of the MBTI test has been questioned because of unreliability in experiments surrounding it, along with other reasons. But it has still proven to be a very useful tool in a lot of areas, and the purpose of this dataset is to help see if any patterns can be detected in specific types and style of writing of people and if these patterns are indicative of a person's personality. This overall explores the validity of the test in analysing, predicting or categorising behaviour. 
+Recently, the validity of the MBTI test has been questioned because of unreliability in experiments surrounding it, along with other reasons. But it has still proven to be a very useful tool in a lot of areas, and the purpose of this dataset[https://www.kaggle.com/datasnaek/mbti-type] is to help see if any patterns can be detected in specific types and style of writing of people and if these patterns are indicative of a person's personality. This overall explores the validity of the test in analysing, predicting or categorising behaviour. 
 
 ### Content
 This dataset contains over 8600 rows of data, on each row is a person’s:
@@ -21,9 +23,15 @@ This dataset contains over 8600 rows of data, on each row is a person’s:
  - A section of each of the last 50 things they have posted (Each entry separated by "|||" (3 pipe characters))
 
 ### Success Criteria
-As mentioned earlier, the experiments are unreliable. In such psychological tests, even an accuracy of 70% is acceptable for the tool to be relied upon. With more examples, the model can learn furter, but presently the data is static and the user will select a few words iteratively to know his/her personality type. The app will also take feedback on whether it was right or wrong. This leaves room for future improvement to the model by using the selected words for each personality  type.
+As mentioned earlier, the experiments are unreliable. In such psychological tests, even an accuracy of 70% is acceptable for the tool to be relied upon. With more examples, the model can learn furter, but presently the data is static and the user will select a few statements iteratively to know his/her personality type. The app will also take feedback on whether it was right or wrong which will be used to test accuracy. This leaves room for future improvement to the model by using the selected words for each personality type.
 
 <!-- toc -->
+
+## Initiatives 
+* Models for extracting writing styles and patterns associated with each MBTI type.
+* Deployment of the model to a Flask app
+* Model for predicting the MBTI type from selected statements
+* Improve accuracy of the predictive model by several user inputs.
 
 ## Sprint Plan
 For the next 3 sprints (Each sprint of 2 weeks) the epics are:
@@ -38,12 +46,16 @@ For the next 3 sprints (Each sprint of 2 weeks) the epics are:
 * Build a model for identifying the personality type based on the chosen words.
 
 #### Epic-3
-* Build the front end app
+* Build the front end app 
+  - Create the first page layout
+  - Design the user input layout
+  - Set connections to the backend servers
 * Performing sanity check using test cases
 
 ## Icebox
 #### Epic-4
-* Bulid a database of the words selected, the predicted personality and the actual personality for checking the accuracy of the model.
+* Identify users who know their MBTI personality to try the app.
+* Bulid a database of the statements selected, the predicted personality and the actual personality for checking the accuracy of the model.
 * Fine tuning the model to increase accuracy.
 
 
