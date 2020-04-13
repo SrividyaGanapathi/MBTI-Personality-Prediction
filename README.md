@@ -4,7 +4,6 @@
 
 <!-- toc -->
 - [Project Charter](#Project-Charter)
-- [Initiatives](#Initiatives)
 - [Sprint Plan](#Sprint-Plan)
 - [Icebox](#Icebox)
 
@@ -36,42 +35,39 @@ As mentioned earlier, the experiments are unreliable. In such psychological test
 ## Sprint Planning
 For the next 4 sprints (Each sprint of 2 weeks) the Initiatives are:
 
-### Initiative 1 : Models to extract writing styles and patterns associated with each MBTI type.
+### Initiative 1: Models to extract writing styles and patterns associated with each MBTI type.
 
-#### Epic-1
-* Exploratory Data Analysis and preprocessing.
+#### Epic-1: Exploratory Data Analysis and preprocessing.
    - Story 1: EDA of the Data
    - Story 2: Apply different embeddings to the data (Count vectorizer, word2vec, GloVe etc.)
      
-#### Epic-2
-* Comparison of models 
+#### Epic-2: Comparison of models 
    - Story 1: Build models like regression, random forest, LSTM, KNN etc. under cross validation to identify the best model.
 
-### Initiative 2 : Develop the front and back ends of the model
+### Initiative 2: Develop the front and back ends of the model
 
-#### Epic-1
-* Build the front end Flask app
+#### Epic-1: Build the front end Flask app
    - Story 1: Create the first page layout
    - Story 2: Design the user input layer
    - Story 3: Set connections to the backend servers
      
-#### Epic-2
-* Set up the cloud server for the data using AWS RDS and S3
+#### Epic-2: Set up the cloud server for the data using AWS RDS and S3
 
-#### Epic-3
-* Performing sanity check using test cases
+#### Epic-3: Performing sanity check using test cases
 
 ### Initiative 3 : Model to predict the MBTI type from selected statements
-#### Epic- Choose statements available to the user
+#### Epic-1: Choose statements available to the user
    - Story 1: Map sets of statements corresponding to each personality type.
-   - Story 2: Design the user input layer
-   - Story 3: Set connections to the backend servers
+   - Story 2: Set connections to the backend servers
+   - Story 3: Create new dataset of selected stat
+   
+#### Epic-2: Predict personality type
+   - Story 1: Create a new dataset of the statements selected by the user 
+   - Story 2: Predict the personality based on the selected statements.
      
-#### Epic-2
-* Set up the cloud server for the data using AWS RDS and S3
-#### Epic-3
-* Choose words (from the dataset and outside) to be displayed to the user for selection.
-* Build a model for identifying the personality type based on the chosen words.
+#### Epic-3: Accuracy Check 
+   - Story 1: Receive the actual MBTI Type from the user as input
+   - Story 2: Append this to the record of the current user.
 
 #### Epic-3
 * Build the front end app 
