@@ -5,6 +5,10 @@
 <!-- toc -->
 - [Project Charter](#Project-Charter)
 - [Sprint Plan](#Sprint-Plan)
+  + [Initiative 1](#Initiative-1)
+  + [Initiative 2](#Initiative-2)
+  + [Initiative 3](#Initiative-3)
+  + [Initiative 4](#Initiative-4)
 - [Icebox](#Icebox)
 
 
@@ -26,11 +30,6 @@ As mentioned earlier, the experiments are unreliable. In such psychological test
 
 <!-- toc -->
 
-## Initiatives 
-* Models for extracting writing styles and patterns associated with each MBTI type.
-* Deployment of the model to a Flask app
-* Model for predicting the MBTI type from selected statements
-* Improve accuracy of the predictive model by several user inputs.
 
 ## Sprint Planning
 For the next 4 sprints (Each sprint of 2 weeks) the Initiatives are:
@@ -76,11 +75,29 @@ For the next 4 sprints (Each sprint of 2 weeks) the Initiatives are:
   - Story 1: Penalize the statements that led to a misclassification.
   - Story 2: Retrain the model to increase accuracy.
   
+## Backlog
+
+The story points are assigned as follows:
+-   0 points - quick chore
+-   1 point ~ 1 hour (small)
+-   2 points ~ 1/2 day (medium)
+-   4 points ~ 1 day (large)
+-   8 points - big and needs to be broken down more when it comes to execution 
+
+
+* Initiative1.Epic1.Story1 (4) [Planned]
+* Initiative1.Epic1.Story2 (4) [Planned]
+* Initiative1.Epic2.Story1 (8) [Planned]
+* Initiative2.Epic1.Story1 (8) [Planned]
+* Initiative2.Epic1.Story2 (2) [Planned]
+* Initiative2.Epic1.Story3 (2) [Planned]
+* Initiative2.Epic2        (1) [Planned]
+
 ## Icebox
-#### Epic-4
-* Identify users who know their MBTI personality to try the app.
-* Bulid a database of the statements selected, the predicted personality and the actual personality for checking the accuracy of the model.
-* Fine tuning the model to increase accuracy.
+
+* Initiative2.Epic3    
+* Initiative3          
+* Initiative4          
 
 
 
