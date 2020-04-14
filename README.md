@@ -4,8 +4,8 @@
 
 <!-- toc -->
 - [Project Charter](#Project-Charter)
-- [Sprint Plan](#Sprint-Plan)
-  + [Initiative 1](#Initiative-1)
+- [Sprint Plan](#Sprint-Planning)
+  + [Initiative 1](#Initiative 1: Models to extract writing styles and patterns associated with each MBTI type.)
   + [Initiative 2](#Initiative-2)
   + [Initiative 3](#Initiative-3)
   + [Initiative 4](#Initiative-4)
