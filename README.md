@@ -12,10 +12,11 @@
 ## Project Charter
 <!-- toc -->
 ### Vision 
-Identify the personality and characteristics of a person as indicated by the Myers-Briggs Type Indicator(MBTI) test by identifying the patterns in his/her writing style.
+The Myers Briggs Type Indicator (or MBTI for short) is a popular personality test that divides everyone into 16 distinct personality types. Companies use it to analyze job applicants, managers use it to determine which employees might get along with one another, and your friends might use it to tell the world what kind of person they are.
+The objective of this project is to identify the personality and characteristics of a user as indicated by the MBTI test using patterns in the user's chosen statements or writing styles.
 
 ### Mission
-The MBTI test is used in various domains everyday but recently, the validity of the test has been questioned because of unreliability in experiments surrounding it, along with other reasons. But it has still proven to be a very useful tool in a lot of areas, and the purpose of this dataset[https://www.kaggle.com/datasnaek/mbti-type] is to help see if any patterns can be detected in specific types and style of writing of people and if these patterns are indicative of a person's personality. This overall explores the validity of the test in analysing, predicting or categorising behaviour. 
+The MBTI test is used in various domains like business, medicine and others everyday but recently, the validity of the test has been questioned because of unreliability in experiments surrounding it, along with other reasons. But it has still proven to be a very useful tool in a lot of areas, and the purpose of this dataset [https://www.kaggle.com/datasnaek/mbti-type] is to help see if any patterns can be detected in specific types and style of writing of people and if these patterns are indicative of a person's personality. This overall explores the validity of the test in analysing, predicting or categorising behaviour. 
 
 ### Content
 This dataset contains over 8600 rows of data, on each row is a person’s:
@@ -23,7 +24,10 @@ This dataset contains over 8600 rows of data, on each row is a person’s:
  - A section of each of the last 50 things they have posted (Each entry separated by "|||" (3 pipe characters))
 
 ### Success Criteria
-As mentioned earlier, the experiments are unreliable. In such psychological tests, even an accuracy of 70% is acceptable for the tool to be relied upon. With more examples, the model can learn furter, but presently the data is static and the user will select a few statements iteratively to know his/her personality type. The app will also take feedback on whether it was right or wrong which will be used to test accuracy. This leaves room for future improvement to the model by using the selected words for each personality type.
+- The success criterion for the model performance evaluation would be the classification accuracy.
+In such psychological tests, even an accuracy of 50% is acceptable for the tool to be relied upon. The app will take feedback on whether it was right or wrong which will also be used to test accuracy.  
+- The business outcome will be measured by the perusal of the app by third parties or business stakeholders to delve deeper into an individual's personality using their social media activity.
+- User engagement and agreement with their personality assessment is also a success criterion.
 
 <!-- toc -->
 
