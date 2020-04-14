@@ -1,4 +1,5 @@
-# MSiA423 MBTI TYPE 
+# MSiA423 Project Repositiory
+## MBTI Assessment App
 ### By Srividya Ganapathi
 ### QA - Bhavya Kaushik
 
