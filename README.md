@@ -1,4 +1,5 @@
-# MSiA423 MBTI TYPE 
+
+# MSiA423 Project MBTI TYPE 
 ### By Srividya Ganapathi
 ### QA - Bhavya Kaushik
 
@@ -50,7 +51,7 @@ For the next 3 sprints (Each sprint of 2 weeks) the epics are:
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-
+-------------------------------------------------------------------------------------
 
 
 - [Directory structure](#directory-structure)
