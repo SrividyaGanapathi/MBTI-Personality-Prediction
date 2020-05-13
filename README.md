@@ -1,5 +1,9 @@
+
 # MSiA423 Project Repositiory
 ## MBTI Assessment App
+=======
+
+
 ### By Srividya Ganapathi
 ### QA - Bhavya Kaushik
 
@@ -105,7 +109,7 @@ The story points are assigned as follows:
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-
+-------------------------------------------------------------------------------------
 
 
 - [Directory structure](#directory-structure)
