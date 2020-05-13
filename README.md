@@ -17,7 +17,7 @@ The Myers Briggs Type Indicator (or MBTI for short) is a popular personality tes
 The objective of this project is to identify the personality and characteristics of a user as indicated by the MBTI test using patterns in the user's chosen statements or writing styles.
 
 ### Mission
-The MBTI test is used in various domains like business, medicine and others everyday but recently, the validity of the test has been questioned because of unreliability in experiments surrounding it, along with other reasons. But it has still proven to be a very useful tool in a lot of areas, and the purpose of this dataset [https://www.kaggle.com/datasnaek/mbti-type] is to help see if any patterns can be detected in specific types and style of writing of people and if these patterns are indicative of a person's personality. A machine learning predictive model will be developed to classify a user into a personality type. The model will be hosted and a web application interface will be created for the users. This overall explores the validity of the test in analysing, predicting or categorising behaviour. 
+The MBTI test is used in various domains like business, medicine and others everyday but recently, the validity of the test has been questioned because of unreliability in experiments surrounding it, along with other reasons. But it has still proven to be a very useful tool in a lot of areas, and the purpose of this dataset [https://www.kaggle.com/datasnaek/mbti-type] is to help see if any patterns can be detected in specific types and style of writing of people and if these patterns are indicative of a person's personality. This overall explores the validity of the test in analysing, predicting or categorising behaviour. 
 
 ### Content
 This dataset contains over 8600 rows of data, on each row is a person’s:
@@ -57,9 +57,10 @@ For the next 4 sprints (Each sprint of 2 weeks) the Initiatives are:
 #### Epic-3: Performing sanity check using test cases
 
 ### Initiative 3 : Model to predict the MBTI type from selected statements
-#### Epic-1: Curate statements for the user to choose from
+#### Epic-1: Choose statements available to the user
    - Story 1: Map sets of statements corresponding to each personality type.
    - Story 2: Set connections to the backend servers
+   - Story 3: Create new dataset of selected stat
    
 #### Epic-2: Predict personality type
    - Story 1: Create a new dataset of the statements selected by the user 
@@ -86,22 +87,18 @@ The story points are assigned as follows:
 -   8 points - big and needs to be broken down more when it comes to execution 
 
 
-1. Initiative1.Epic1.Story1  (4) [Planned]
-2. Initiative1.Epic1.Story2  (4) [Planned]
-3. Initiative1.Epic2.Story1  (8) [Planned]
-4. Initiative2.Epic1.Story1  (8) [Planned]
-5. Initiative2.Epic1.Story2  (2) [Planned]
-6. Initiative2.Epic1.Story3  (2) [Planned]
-7. Initiative2.Epic2         (1) [Planned]
-8. Initiative2.Epic3         (2) [Planned]
-9. Initiative3.Epic1.Story1  (2) [Planned]
-10. Initiative3.Epic1.Story2 (2) [Planned]
-11. Initiative3.Epic2.Story1 (8) [Planned]
-12. Initiative3.Epic2.Story2 (1) [Planned]
-
+* Initiative1.Epic1.Story1 (4) [Planned]
+* Initiative1.Epic1.Story2 (4) [Planned]
+* Initiative1.Epic2.Story1 (8) [Planned]
+* Initiative2.Epic1.Story1 (8) [Planned]
+* Initiative2.Epic1.Story2 (2) [Planned]
+* Initiative2.Epic1.Story3 (2) [Planned]
+* Initiative2.Epic2        (1) [Planned]
 
 ## Icebox
 
+* Initiative2.Epic3    
+* Initiative3          
 * Initiative4          
 
 
