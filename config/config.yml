@@ -1,0 +1,8 @@
+logging:
+  LOGGER_NAME: 'root'
+
+load_data:
+
+  SOURCE_BUCKET: "nw-srividyaganapathi-s3"
+  local_location: "data/raw/mbti_1.csv"
+
