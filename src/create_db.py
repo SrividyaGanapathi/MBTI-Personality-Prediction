@@ -66,9 +66,9 @@ def create_db(args):
             conn_type = "mysql+pymysql"
             user = os.getenv("MYSQL_USER")
             password = os.getenv("MYSQL_PASSWORD")
-            host = os.getenv("MYSQL_HOST")
-            port = os.getenv("MYSQL_PORT")
-            db_name = os.getenv("MYSQL_DB")
+            host = config['rds']['MYSQL_HOST']
+            port = config['rds']['MYSQL_PORT']
+            db_name = config['rds']['MYSQL_DB']
             engine_string = "{}://{}:{}@{}:{}/{}".format(conn_type, user, password, host, port, db_name)
 
             logger.debug('Creating database now.')
