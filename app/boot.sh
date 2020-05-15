@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
+python3 run1.py load_data
+python3 run1.py create_db --where=Local
 
-python3 run.py create_db
-python3 run.py ingest
-python3 app.py
