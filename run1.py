@@ -2,7 +2,7 @@
 Enables the command line execution of multiple modules within src/
 This module combines the argparsing of each module within src/ and enables the execution of the corresponding scripts
 so that all module imports can be absolute with respect to the main project directory.
-To understand different arguments, run `python run.py --help`
+To understand different arguments, run `python run1.py --help`
 """
 import os
 import argparse
