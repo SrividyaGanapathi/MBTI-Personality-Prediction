@@ -8,6 +8,15 @@
 - [Sprint Plan](#Sprint-Planning)
 - [Backlog](#Backlog)
 - [Icebox](#Icebox)
+- [Running the application](#running-the-application)
+  * [1. Initial setup](#1-initial-setup)
+  * [2. Set up environment](#2-set-up-environment)
+  * [3. Download the data](#3-download-the-data)
+  * [4. Initialize the database](#4-initialize-the-database)
+  
+- [Logging](#logging)
+- [Links To notebooks](#links-to-notebooks)
+- [Acknowledgements](#acknowledgements)
 
 
 ## Project Charter
