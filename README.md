@@ -15,8 +15,7 @@
   * [4. Initialize the database](#4-initialize-the-database)
   
 - [Logging](#logging)
-- [Links To notebooks](#links-to-notebooks)
-- [Acknowledgements](#acknowledgements)
+
 
 
 ## Project Charter
@@ -117,14 +116,12 @@ The story points are assigned as follows:
 
 ## Running the application
 
-
-
 ### 1. Initial Setup
 
 To run the app, ensure to go through the following:
 * Docker desktop should be running
 * Set up AWS CLI. Kindly refer to this [link](https://www.kaggle.com/datasnaek/mbti-type/download).
-* Set the following environment variables with the following commands(without the quotes):
+* Set the following environment variables with the following commands in command line:
 ```bash
     export AWS_KEY_ID=""
     export AWS_ACCESS_KEY=""
@@ -139,60 +136,52 @@ Original Data Source: [Kaggle](https://www.kaggle.com/c/house-prices-advanced-re
 For the ease of downloading, the raw data has been downloaded and placed in the **data/raw** folder. 
 
 
-#### Running on Local
-Run the following command in command line:
+### 3. Upload to AWS
+Input the following in the load_data dictionary of the config/config.yml:
+- SOURCE_BUCKET - Name of the S3 bucket where the data has to be uploaded.
+- local_location - Location of the data in local system. (In this case - data/raw/mbti_1.csv)
+
+#### Docker Image
+Build the docker image with the following command in command line:
 ```bash
-python run.py load_data
+docker build -t mbti .
 ```
-
-With `Make`
-```
-make load_data
-```
-Running this code will download the raw data from the s3 bucket and will put it in **/Data/raw/**
-
-
-#### AWS
-Run the following command in command line:
+Run the docker image with the aws credentials using the following command in command line. Note that the data will be uploaded to a dump folder that will be created in the s3 bucket.
 ```bash
-python run.py load_data --where=AWS --bucket=<destination_bucket_name>
+docker run -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION  mbti
 ```
-
-With `Make`
-```
-make load_data
-```
-Running this code will download the raw data from the s3 bucket and will put it in **<destination_bucket_name>/raw/**
+The data sould be successfully uploaded to your s3 bucket.
 
 
 ### 4. Initialize the database
 
 #### Local
-Run the following command in command line:
+Input the following in the db_config dictionary of the config/config.yml:
+- SQLALCHEMY_DATABASE_URL - "sqlite:///<location>/<name_of_database>.db"
+In this case, running the following code in command line will create a sqlite database of the mbti data at: **data/msia423.db**
+ 
 ```bash
-python run.py create_db
+ docker run --mount type=bind,source="$(pwd)"/data,target=/app/data mbti
 ```
-
-With `Make`
-```
-make create_db
-```
-
-Running this code will create a sqlite database to log the app usage at: **/Database/msia423.db**
 
 #### AWS
-
+Set the following environment variables with the following commands in command line:
+```bash
+    export MYSQL_USER=""
+    export MYSQL_PASSWORD=""
+```
+Input the following in the rds dictionary of the config/config.yml:
+- SQLALCHEMY_DATABASE_URL - "sqlite:///<location>/<name_of_database>.db"
+- MYSQL_HOST - <Host_Name_of_RDS_Instance>
+  MYSQL_PORT - 3306
+  MYSQL_DB - <Name of an existing database>, here - msia423_db
+ 
 Run the following command in command line:
 ```bash
-python run.py create_db --where=AWS
+docker run -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION -e MYSQL_USER=$MYSQL_USER -e MYSQL_PASSWORD=$MYSQL_PASSWORD mbti
 ```
 
-With `Make`
-```
-make create_db
-```
-
-Running this code will create the database specified in the given RDS instance 
+Running this code will create the database specified in the given RDS instance.
 
 
 
