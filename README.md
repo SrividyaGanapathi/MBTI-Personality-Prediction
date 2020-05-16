@@ -157,7 +157,8 @@ The data sould be successfully uploaded to your s3 bucket.
 
 #### Local
 Input the following in the db_config dictionary of the config/config.yml:
-- SQLALCHEMY_DATABASE_URL - "sqlite:///<location>/<name_of_database>.db"
+- SQLALCHEMY_DATABASE_URL - `sqlite:///<location>/<name_of_database>.db`
+
  
 Set the command in app/boot.sh as:
 **python3 run1.py create_db --where=Local**
