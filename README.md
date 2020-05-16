@@ -133,7 +133,7 @@ To run the app, ensure to go through the following:
 
 Original Data Source: [Kaggle](https://www.kaggle.com/datasnaek/mbti-type/download)
 
-For further steps, please store the data in the **data/raw** folder. 
+For further steps, please extract and store the data file **mbti_1.csv** in the **data/raw** folder. 
 
 
 ### 3. Upload to AWS
