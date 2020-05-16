@@ -179,7 +179,7 @@ Set the following environment variables with the following commands in command l
     export MYSQL_PASSWORD=""
 ```
 Input the following in the rds dictionary of the config/config.yml:
-- SQLALCHEMY_DATABASE_URL - "sqlite:///<location>/<name_of_database>.db"
+- SQLALCHEMY_DATABASE_URL - `sqlite:///<location>/<name_of_database>.db`
 - MYSQL_HOST - <Host_Name_of_RDS_Instance>
 - MYSQL_PORT - 3306
 - MYSQL_DB - <Name of an existing database>, here - msia423_db
