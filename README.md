@@ -131,7 +131,7 @@ To run the app, ensure to go through the following:
 
 ### 2. Download the data
 
-Original Data Source: [Kaggle](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
+Original Data Source: [Kaggle](https://www.kaggle.com/datasnaek/mbti-type/download)
 
 For the ease of downloading, the raw data has been downloaded and placed in the **data/raw** folder. 
 
