@@ -158,6 +158,13 @@ The data sould be successfully uploaded to your s3 bucket.
 #### Local
 Input the following in the db_config dictionary of the config/config.yml:
 - SQLALCHEMY_DATABASE_URL - "sqlite:///<location>/<name_of_database>.db"
+ 
+Set the command in app/boot.sh as:
+**python3 run1.py create_db --where=Local**
+Rebuild the docker image with the following command in command line:
+```bash
+docker build -t mbti .
+```
 In this case, running the following code in command line will create a sqlite database of the mbti data at: **data/msia423.db**
  
 ```bash
@@ -173,9 +180,15 @@ Set the following environment variables with the following commands in command l
 Input the following in the rds dictionary of the config/config.yml:
 - SQLALCHEMY_DATABASE_URL - "sqlite:///<location>/<name_of_database>.db"
 - MYSQL_HOST - <Host_Name_of_RDS_Instance>
-  MYSQL_PORT - 3306
-  MYSQL_DB - <Name of an existing database>, here - msia423_db
+- MYSQL_PORT - 3306
+- MYSQL_DB - <Name of an existing database>, here - msia423_db
  
+Set the command in app/boot.sh as:
+**python3 run1.py create_db --where=AWS**
+Rebuild the docker image with the following command in command line:
+```bash
+docker build -t mbti .
+```
 Run the following command in command line:
 ```bash
 docker run -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION -e MYSQL_USER=$MYSQL_USER -e MYSQL_PASSWORD=$MYSQL_PASSWORD mbti
