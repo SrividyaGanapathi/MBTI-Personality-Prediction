@@ -123,8 +123,8 @@ To run the app, ensure to go through the following:
 * Set up AWS CLI. Kindly refer to this [link](https://www.kaggle.com/datasnaek/mbti-type/download).
 * Set the following environment variables with the following commands in command line:
 ```bash
-    export AWS_KEY_ID=""
-    export AWS_ACCESS_KEY=""
+    export AWS_ACCESS_KEY_ID=""
+    export AWS_SECRET_ACCESS_KEY=""
     export AWS_DEFAULT_REGION=""
 ```
 
