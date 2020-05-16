@@ -115,6 +115,87 @@ The story points are assigned as follows:
 
 
 
+## Running the application
+
+
+
+### 1. Initial Setup
+
+To run the app, ensure to go through the following:
+* Docker desktop should be running
+* Set up AWS CLI. Kindly refer to this [link](https://www.kaggle.com/datasnaek/mbti-type/download).
+* Set the following environment variables with the following commands(without the quotes):
+```bash
+    export AWS_KEY_ID=""
+    export AWS_ACCESS_KEY=""
+    export AWS_DEFAULT_REGION=""
+```
+
+
+### 2. Download the data
+
+Original Data Source: [Kaggle](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
+
+For the ease of downloading, the raw data has been downloaded and placed in the **data/raw** folder. 
+
+
+#### Running on Local
+Run the following command in command line:
+```bash
+python run.py load_data
+```
+
+With `Make`
+```
+make load_data
+```
+Running this code will download the raw data from the s3 bucket and will put it in **/Data/raw/**
+
+
+#### AWS
+Run the following command in command line:
+```bash
+python run.py load_data --where=AWS --bucket=<destination_bucket_name>
+```
+
+With `Make`
+```
+make load_data
+```
+Running this code will download the raw data from the s3 bucket and will put it in **<destination_bucket_name>/raw/**
+
+
+### 4. Initialize the database
+
+#### Local
+Run the following command in command line:
+```bash
+python run.py create_db
+```
+
+With `Make`
+```
+make create_db
+```
+
+Running this code will create a sqlite database to log the app usage at: **/Database/msia423.db**
+
+#### AWS
+
+Run the following command in command line:
+```bash
+python run.py create_db --where=AWS
+```
+
+With `Make`
+```
+make create_db
+```
+
+Running this code will create the database specified in the given RDS instance 
+
+
+
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 
