@@ -5,7 +5,6 @@ This module contains functions to create the database to log usage data
 import os
 import logging
 import logging.config
-import datetime
 
 from sqlalchemy import create_engine, Column, Integer, String, Float
 from sqlalchemy.ext.declarative import declarative_base
@@ -14,7 +13,6 @@ import yaml
 import argparse
 
 import getpass
-import pymysql
 
 logger = logging.getLogger()
 
@@ -84,7 +82,7 @@ def create_db(args):
             'Kindly check the arguments and rerun. To understand different arguments, run `python run1.py --help`')
 
     if args.where in ["AWS", "Local"]:
-        print(args.where)
+
         try:
             Base.metadata.drop_all(engine)
             Base.metadata.create_all(engine)

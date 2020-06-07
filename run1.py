@@ -19,6 +19,10 @@ logger = logging.getLogger(config['logging']['LOGGER_NAME'])
 
 from src.load_data import load_data
 from src.create_db import create_db
+from src.Preprocess import preprocess
+from src.vectorizer_tfidf import vec_tfidf
+from src.xgb_model import xgb_model
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Run components of the run source code")
@@ -29,10 +33,24 @@ if __name__ == '__main__':
     sb_fetch.set_defaults(func=load_data)
 
     # Sub-parser for creating a database
-    sb_create = subparsers.add_parser("create_db", description="Create database to track usage logs")
+    sb_create = subparsers.add_parser("create_db", description="Create database")
     sb_create.add_argument("--where", default="Local",
                            help="'Local' or 'AWS'. Seeks variables from environment for AWS by default")
     sb_create.set_defaults(func=create_db)
+
+    #Sub-paraser for preprocessing
+    sb_preprocess = subparsers.add_parser("preprocess", description="Create separate lists of posts and personalities (x & y)")
+    sb_preprocess.set_defaults(func=preprocess)
+
+    # Sub-paraser for vectorizer-tfidf
+    sb_vec_tfidf = subparsers.add_parser("vec_tfidf", description="Create vectorizer and apply tfidf")
+    sb_vec_tfidf.set_defaults(func=vec_tfidf)
+
+    # Sub-paraser for xgb model
+    sb_xgb_model = subparsers.add_parser("xgb_model", description="Train data on xgb model")
+    sb_xgb_model.set_defaults(func=xgb_model)
+
+
 
 
 

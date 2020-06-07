@@ -2,9 +2,37 @@ logging:
   LOGGER_NAME: 'root'
 
 load_data:
-
   SOURCE_BUCKET: "nw-srividyaganapathi-s3"
   local_location: "data/raw/mbti_1.csv"
+
+preprocess:
+  path: "data/raw/mbti_1.csv"
+  b_Pers: '{"I": 0, "E": 1, "N": 0, "S": 1, "F": 0, "T": 1, "J": 0, "P": 1}'
+  b_Pers_list: "[{0: 'I', 1: 'E'}, {0: 'N', 1: 'S'}, {0: 'F', 1: 'T'}, {0: 'J', 1: 'P'}]"
+  unique_type_list:      # We want to remove these from the posts
+    - 'INFJ'
+    - 'ENTP'
+    - 'INTP'
+    - 'INTJ'
+    - 'ENTJ'
+    - 'ENFJ'
+    - 'INFP'
+    - 'ENFP'
+    - 'ISFP'
+    - 'ISTP'
+    - 'ISFJ'
+    - 'ISTJ'
+    - 'ESTP'
+    - 'ESFP'
+    - 'ESTJ'
+    - 'ESFJ'
+
+vec_tfidf:
+  max_features: 1500
+  max_df: 0.7
+  min_df: 0.1
+
+
 
 db_config:
   SQLALCHEMY_DATABASE_URL: 'sqlite:///data/msia423_db.db'
@@ -15,6 +43,16 @@ rds:
   MYSQL_HOST: msia423-srividya.cyzkqezn0z0w.us-east-2.rds.amazonaws.com
   MYSQL_PORT: 3306
   MYSQL_DB: msia423_db
+
+
+model:
+  X_path: "data/X_tfidf.npy"
+  Y_path: "data/list_personality.npy"
+  type_indicators:
+  - "IE: Introversion (I)/Extroversion (E)"
+  - "NS: Intuition (N)/Sensing (S)"
+  - "FT: Feeling (F)/Thinking (T)"
+  - "JP: Judging (J)/Perceiving (P)"
 
 
 
