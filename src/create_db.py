@@ -77,7 +77,6 @@ def create_db(args):
             port = config['rds']['MYSQL_PORT']
             db_name = config['rds']['MYSQL_DB']
             engine_string = "{}://{}:{}@{}:{}/{}".format(conn_type, user, password, host, port, db_name)
-            print(engine_string)
 
             logger.debug('Creating database now.')
             engine = create_engine(engine_string)
