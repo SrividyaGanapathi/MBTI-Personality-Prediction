@@ -9,8 +9,8 @@ APP_NAME = "mbti"
 HOST = "0.0.0.0"
 
 conn_type = "mysql+pymysql"
-user = os.environ.get("MYSQL_USER")
-password = os.environ.get("MYSQL_PASSWORD")
+user = 'msia423instructor'
+password = 'sgk1336'
 host = 'msia423-srividya.cyzkqezn0z0w.us-east-2.rds.amazonaws.com'
 port = 3306
 DATABASE_NAME = 'msia423_db'

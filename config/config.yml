@@ -54,6 +54,8 @@ db_config:
   SQLALCHEMY_ECHO: False  # If true, SQL for queries made will be printed
 
 rds:
+  MYSQL_USER: msia423instructor
+  MYSQL_PASSWORD: sgk1336
   MYSQL_HOST: msia423-srividya.cyzkqezn0z0w.us-east-2.rds.amazonaws.com
   MYSQL_PORT: 3306
   MYSQL_DB: msia423_db

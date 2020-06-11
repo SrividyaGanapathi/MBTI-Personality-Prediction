@@ -71,12 +71,13 @@ def create_db(args):
             logger.info(
                 'Creating an RDS database based on environment variables: MYSQL_USER, MYSQL_PASSWORD, MYSQL_HOST, MYSQL_PORT, MYSQL_DB.')
             conn_type = "mysql+pymysql"
-            user = os.getenv("MYSQL_USER")
-            password = os.getenv("MYSQL_PASSWORD")
+            user = config['rds']['MYSQL_USER']
+            password = config['rds']['MYSQL_PASSWORD']
             host = config['rds']['MYSQL_HOST']
             port = config['rds']['MYSQL_PORT']
             db_name = config['rds']['MYSQL_DB']
             engine_string = "{}://{}:{}@{}:{}/{}".format(conn_type, user, password, host, port, db_name)
+            print(engine_string)
 
             logger.debug('Creating database now.')
             engine = create_engine(engine_string)

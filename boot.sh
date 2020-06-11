@@ -2,7 +2,7 @@
 #Loads data to or from S3. Help in run1.py
 python3 run1.py load_data --where=Download
 # Creates database in local or RDS. Help in run1.py
-python3 run1.py create_db --where=Local
+python3 run1.py create_db --where=AWS
 #Preprocesses raw data
 python3 run1.py preprocess
 #Vectorizes preprocessed data
