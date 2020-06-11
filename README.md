@@ -156,7 +156,7 @@ docker build -t mbti .
 #### Pipeline
 Run **boot.sh** file through the docker image with the aws credentials using the following command in command line.
 ```bash
-winpty docker run -v "$(pwd)":"$(pwd)" -it --env AWS_ACCESS_KEY_ID --env AWS_SECRET_ACCESS_KEY mbti boot.sh
+winpty docker run -v "$(pwd)":"$(pwd)" -it --env AWS_ACCESS_KEY_ID --env AWS_SECRET_ACCESS_KEY --mount type=bind,source="$(pwd)"/data,target=/app/data mbti boot.sh
 ```
 #### Testing
 Run the **test/runtests.sh** file through the docker image using the following command in command line.
