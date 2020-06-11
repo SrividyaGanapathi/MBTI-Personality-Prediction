@@ -17,7 +17,7 @@ import pickle
 with open(os.path.join("config", "config.yml"), "r") as f:
     config = yaml.safe_load(f)
 
-X = np.load(config['model']['X_path'])
+
 
 def xgb(config,X):
     """ Function to fit 4 xgb models, one for each type-indicator
@@ -81,6 +81,7 @@ def xgb_model(args):
         None
     '''
     logger.debug('Running the xgb function')
+    X = np.load(config['model']['X_path'])
     try:
         xgb(config,X)
 
