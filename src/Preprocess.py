@@ -38,7 +38,7 @@ def translate_back(personality,config):
         s += bin_Pers_list[i][l]
     return s
 
-df=pd.read_csv(config['preprocess']['path'])
+
 
 
 def x_ylists(config,df):
@@ -113,6 +113,7 @@ def preprocess(args):
         None
     '''
     logger.debug('Running the preprocess function')
+    df=pd.read_csv(config['preprocess']['path'])
     try:
 
         x_ylists(config,df)
