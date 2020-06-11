@@ -12,7 +12,7 @@ import pickle
 with open(os.path.join("config", "config.yml"), "r") as f:
     config = yaml.safe_load(f)
 
-list_posts = np.load(config['preprocess']['list_posts'])
+
 
 logger.debug('Running the vectorizer functions')
 
@@ -57,6 +57,7 @@ def vec(args):
         None
     '''
     logger.debug('Running the vectorizer function')
+    list_posts = np.load(config['preprocess']['list_posts'])
     try:
         vectorize(config,list_posts)
 
