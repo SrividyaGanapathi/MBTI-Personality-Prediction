@@ -7,7 +7,10 @@ import logging
 import logging.config
 
 from sqlalchemy import create_engine, Column, Integer, String, Float
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+
+import pandas as pd
 
 import yaml
 import argparse
@@ -25,16 +28,24 @@ class mbti_1(Base):
     __tablename__ = 'mbti_1'
 
     ID = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
-    Type = Column(String(100), unique=False, nullable=False)
+
     Posts = Column(String(20000), unique=False, nullable=False)
+    I = Column(String(2), unique=False, nullable=False)
+    E = Column(String(2), unique=False, nullable=False)
+    N = Column(String(2), unique=False, nullable=False)
+    S = Column(String(2), unique=False, nullable=False)
+    F = Column(String(2), unique=False, nullable=False)
+    T = Column(String(2), unique=False, nullable=False)
+    J = Column(String(2), unique=False, nullable=False)
+    P = Column(String(2), unique=False, nullable=False)
 
 
     def __repr__(self):
         mbti_repr = "<mbti_1=(Type='%s Posts='%d>"
-        return mbti_repr % (self.Type, self.Posts)
+        return mbti_repr % (self.Posts,self.I,self.E,self.N,self.S,self.F,self.T,self.J,self.P)
 
 def create_db(args):
-    """Creates a database with the data models inherited from `Base` (Usage_Log).
+    """Creates a database with the data models inherited from `Base` (mbti_1).
     Args:
         args: Argparse args - include args args.where
             args.where:  'Local' or 'AWS'
@@ -51,10 +62,8 @@ def create_db(args):
             logger.info('Creating a local database at {}'.format(config['db_config']['SQLALCHEMY_DATABASE_URL']))
             engine = create_engine(config['db_config']['SQLALCHEMY_DATABASE_URL'])
             logger.debug('Database engine successfully created.')
-            print('Database engine successfully created.')
         except Exception as e:
             logger.error(e)
-            print(e)
 
     elif args.where == "AWS":
         try:
@@ -84,12 +93,9 @@ def create_db(args):
     if args.where in ["AWS", "Local"]:
 
         try:
-            Base.metadata.drop_all(engine)
             Base.metadata.create_all(engine)
             logger.info('Database successfully created.')
-            print('Database successfully created.')
+
 
         except Exception as e:
             logger.error("Database could not be created. Kindly check the configurations and try again.")
-            logger.error(e)
-            print(e)

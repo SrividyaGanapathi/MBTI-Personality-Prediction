@@ -11,8 +11,8 @@
 - [Running the application](#running-the-application)
   * [1. Initial setup](#1-initial-setup)
   * [2. Download the data](#2-download-the-data)
-  * [3. Upload to AWS](#3-Upload-to-AWS)
-  * [4. Initialize the database](#4-initialize-the-database)
+  * [3. Run the pipeline](#3-Run-the-pipeline)
+  * [4. Run the App](#4-Run-the-App)
   
 - [Logging](#logging)
 
@@ -39,7 +39,6 @@ In such psychological tests, even an accuracy of 50% is acceptable for the tool 
 - User engagement and agreement with their personality assessment is also a success criterion.
 
 <!-- toc -->
-
 
 ## Sprint Planning
 For the next 4 sprints (Each sprint of 2 weeks) the Initiatives are:
@@ -114,6 +113,7 @@ The story points are assigned as follows:
 
 
 
+
 ## Running the application
 
 ### 1. Initial Setup
@@ -133,71 +133,86 @@ To run the app, ensure to go through the following:
 
 Original Data Source: [Kaggle](https://www.kaggle.com/datasnaek/mbti-type/download)
 
-For further steps, please extract and store the data file **mbti_1.csv** in the **data/raw** folder. 
+The data has been placed in the S3 bucket named nw-srividyaganapathi-s3 from where it can 
+be downloaded. The steps for the same are mentioned below.
 
 
-### 3. Upload to AWS
-Input the following in the load_data dictionary of the config/config.yml:
-- SOURCE_BUCKET - Name of the S3 bucket where the data has to be uploaded.
-- local_location - Location of the data in local system. (In this case - data/raw/mbti_1.csv)
+### 3. Run the pipeline 
+The following commands will accomplish these tasks - 
+- Load Data - The data will be loaded from the S3 bucket to
+the local location(both mentioned in the config). 
+`--where= Upload/Download` in **boot.sh** will upload data to S3 bucket or download data from S3 bucket
+- Create DB -This function will let you create a database in either local system or
+RDS. `--where= Local/AWS` in **boot.sh** will create a database locally or on RDS.
+- Preprocess - Preprocessing
+- Vectorize - Vectorization
+- XGBoost - XGBoost model
 
 #### Docker Image
 Build the docker image with the following command in command line:
 ```bash
 docker build -t mbti .
 ```
-Run the docker image with the aws credentials using the following command in command line. Note that the data will be uploaded to a dump folder that will be created in the s3 bucket.
+#### Pipeline
+Run **boot.sh** file through the docker image with the aws credentials using the following command in command line.
 ```bash
-docker run -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION  mbti
+winpty docker run -v "$(pwd)":"$(pwd)" -it --env AWS_ACCESS_KEY_ID --env AWS_SECRET_ACCESS_KEY --env MYSQL_HOST --env MYSQL_PORT --env MYSQL_USER --env MYSQL_PASSWORD  mbti boot.sh
 ```
-The data sould be successfully uploaded to your s3 bucket.
+#### Testing
+Run the **test/runtests.sh** file through the docker image using the following command in command line.
+```bash
+winpty docker run mbti test/runtests.sh
+```
+This will run the tests on preprocessing, vectorizing and modelling.
+
+Note: If you are a MAC user, please remove the `winpty`.
 
 
-### 4. Initialize the database
+### 4. Run the App
 
-#### Local
-Input the following in the db_config dictionary of the config/config.yml:
-- SQLALCHEMY_DATABASE_URL - `sqlite:///<location>/<name_of_database>.db`
+The app will be built separately. It can update user inputs and 
+the corresponding predictions either in the local db or in RDS.
 
- 
-Set the command in app/boot.sh as:
-**python3 run1.py create_db --where=Local**
-Rebuild the docker image with the following command in command line:
-```bash
-docker build -t mbti .
-```
-In this case, running the following code in command line will create a sqlite database of the mbti data at: **data/msia423.db**
- 
-```bash
- docker run --mount type=bind,source="$(pwd)"/data,target=/app/data mbti
-```
+To choose the table where the rows will be updated set the MODE in 
+**config/flaskconfig.py** to Local/AWS.
 
-#### AWS
-Set the following environment variables with the following commands in command line:
+Note: If you choose Local(AWS) for Pipeline, choose Local(AWS) for the app and 
+
+#### Docker Image
+Build the docker image with the following command in command line:
 ```bash
-    export MYSQL_USER=""
-    export MYSQL_PASSWORD=""
+docker build -f app/Dockerfile -t mbti_app .
 ```
-Input the following in the rds dictionary of the config/config.yml:
-- SQLALCHEMY_DATABASE_URL - `sqlite:///<location>/<name_of_database>.db`
-- MYSQL_HOST - <Host_Name_of_RDS_Instance>
-- MYSQL_PORT - 3306
-- MYSQL_DB - <Name of an existing database>, here - msia423_db
- 
-Set the command in app/boot.sh as:
-**python3 run1.py create_db --where=AWS**
-Rebuild the docker image with the following command in command line:
+#### Deployment
+Run the following command in command line to start the app:
 ```bash
-docker build -t mbti .
+winpty sh app/boot_app.sh
 ```
-Run the following command in command line:
+Note: If you are a MAC user, please remove the `winpty`.
+
+#### Kill Container
+Once finished with the app, you will need to kill the container. To do so:
 ```bash
-docker run -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION -e MYSQL_USER=$MYSQL_USER -e MYSQL_PASSWORD=$MYSQL_PASSWORD mbti
+docker kill testapp 
 ```
-Running this code will create the database specified in the given RDS instance.
+Where `testapp` is the name given in the docker run command.
+
 
 ## Logging
 All logs are saved at **logs/logfile.log** in the docker container.
+
+
+## Acknowledgements
+Sincerest thanks:  
+* Bhavya Kaushik
+* Chloe Mawer
+* Fausto Inestroza
+* Jaehoon Koo
+
+
+
+
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 

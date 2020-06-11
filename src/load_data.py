@@ -5,6 +5,7 @@ import os
 import logging
 import boto3
 import yaml
+from botocore.exceptions import ClientError
 logger = logging.getLogger()
 
 
@@ -25,12 +26,43 @@ def upload_file_s3(config):
         s3 = boto3.resource('s3')
         Bucket=config['load_data']['SOURCE_BUCKET']
 
-        s3.Bucket(Bucket).upload_file(config['load_data']['local_location'], "dump/mbti_1.csv")
+        s3.Bucket(Bucket).upload_file(config['load_data']['local_location'], "mbti_1.csv")
 
     except Exception as e:
         logger.error(e)
-        print(e)
         return
+
+
+def download_file_s3(config):
+    '''Fetches the data from the s3 bucket and dumps it into the local source
+
+
+    Args:
+        config: Config dictionary
+
+    Returns:
+        None
+    '''
+
+    logger.debug('Running the download_file function')
+    s3 = boto3.client('s3')
+    for object in s3.list_objects_v2(Bucket=config['load_data']['SOURCE_BUCKET'])['Contents']:
+        try:
+            logger.info("Downloading %s from bucket %s", object['Key'], config['load_data']['SOURCE_BUCKET'])
+            s3.download_file(config['load_data']['SOURCE_BUCKET'], object['Key'],
+                             os.path.join("data", "raw", object['Key']))
+            logger.info("File successfully downloaded to %s", os.path.join("data", "raw"))
+
+        except ClientError as e:
+            if e.response['Error']['Code'] == "404":
+                logger.warning("The object %s does not exist in AWS bucket %s.", object['Key'],
+                               config['load_data']['SOURCE_BUCKET'])
+            else:
+                raise
+
+        except Exception as e:
+            logger.error(e)
+            return
 
 def load_data(args):
     '''Fetches the data from the raw source and dumps it at the location specified
@@ -47,11 +79,15 @@ def load_data(args):
         with open(os.path.join("config", "config.yml"), "r") as f:
             config = yaml.safe_load(f)
 
-        upload_file_s3(config)
-        print("Uploaded data successfully")
+        if args.where == "Download":
+            download_file_s3(config)
+            logger.debug("Downloaded data successfully")
+
+        elif args.where =="Upload":
+            upload_file_s3(config)
+            logger.debug("Uploaded data successfully")
 
     except Exception as e:
         logger.error(e)
-        print(e)
         return
 

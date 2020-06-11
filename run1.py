@@ -20,7 +20,7 @@ logger = logging.getLogger(config['logging']['LOGGER_NAME'])
 from src.load_data import load_data
 from src.create_db import create_db
 from src.Preprocess import preprocess
-from src.vectorizer_tfidf import vec_tfidf
+from src.vectorizer import vec
 from src.xgb_model import xgb_model
 
 
@@ -30,6 +30,8 @@ if __name__ == '__main__':
 
     # Sub-parser for loading the raw data
     sb_fetch = subparsers.add_parser("load_data", description="Fetch the raw data from the source")
+    sb_fetch.add_argument("--where", default="Download",
+                           help="'Upload' or 'Download'. Uploads the data to s3 or downloads data from s3")
     sb_fetch.set_defaults(func=load_data)
 
     # Sub-parser for creating a database
@@ -42,9 +44,9 @@ if __name__ == '__main__':
     sb_preprocess = subparsers.add_parser("preprocess", description="Create separate lists of posts and personalities (x & y)")
     sb_preprocess.set_defaults(func=preprocess)
 
-    # Sub-paraser for vectorizer-tfidf
-    sb_vec_tfidf = subparsers.add_parser("vec_tfidf", description="Create vectorizer and apply tfidf")
-    sb_vec_tfidf.set_defaults(func=vec_tfidf)
+    # Sub-paraser for vectorizer
+    sb_vec = subparsers.add_parser("vec", description="Create vectorizer")
+    sb_vec.set_defaults(func=vec)
 
     # Sub-paraser for xgb model
     sb_xgb_model = subparsers.add_parser("xgb_model", description="Train data on xgb model")

@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300" rel="stylesheet">
+
+    <style>
+        form {
+            margin: auto;
+            width: 50%;
+        }
+        #titleDiv {
+            background-color: darkslategrey;
+            height: 600px;
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            color: whitesmoke;
+        }
+        .submit {
+            background: whitesmoke;
+            color: darkslategrey;
+            border-style: outset;
+            border-color: whitesmoke;
+            height: 40px;
+            width: 120px;
+            font-size: 12px;
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: none;
+        }
+        .result {
+            background-color: whitesmoke;
+            text-align: center;
+            margin: auto;
+            width: 100%;
+            height: 220px;
+            border: 1px solid #ccc;
+        }
+        p {
+            font-family: 'Montserrat', sans-serif;
+            color: #282828;
+        }
+    </style>
+    <head>
+        <title>MBTI Personality Type</title>
+    </head>
+    <div id="titleDiv">
+        <h1>MBTI Personality Type</h1>
+
+        <form action="{{ url_for('main') }}" method="POST">
+            <fieldset>
+                <label for="comment">Tell me about yourself in 10 lines</label>
+                <textarea class="form-control" rows="20" name="statement" required></textarea>
+                <br>
+                <input type="submit" class="submit">
+            </fieldset>
+        </form>
+
+    </div>
+    <br>
+    <div class="result" align="center">
+    {% if result %}
+
+        <br> <p style="font-size: 20px"> Your MBTI Type Probabilities are: </p> <p style="font-size:25px">
+            {% for variable, value in result.items() %}
+             <b>{{ value }}</b> <br>
+            {% endfor %}
+        </p>
+    {% endif %}
+    <p>
+        <img src="https://i.pinimg.com/originals/18/3b/fb/183bfb8961470846df475ba48e41bbd3.png"
+             alt="Types" style="float:center;margin:45px 20px 20px 0;width:800px;height:600px;">
+
+    </p>
+
+    </div>
+</html>
